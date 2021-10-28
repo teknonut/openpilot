@@ -231,7 +231,7 @@ class LongitudinalMpc:
 
   def set_weights_for_lead_policy(self, prev_accel_constraint=True):
     a_change_cost = .1 if prev_accel_constraint else 0
-    W = np.diag([0., 10., 1., 10., .1, 1.])
+    W = np.diag([0., .01, .0, 10., .1, 1.])
     for i in range(N):
       self.solver.cost_set(i, 'W', W)
     # Setting the slice without the copy make the array not contiguous,
@@ -244,7 +244,7 @@ class LongitudinalMpc:
       self.solver.cost_set(i, 'Zl', Zl)
 
   def set_weights_for_xva_policy(self):
-    W = np.diag([0., 0.1, .5, 1., 0.0, 1.])
+    W = np.diag([0., 0., .0, 1., 0.0, 1.])
     for i in range(N):
       self.solver.cost_set(i, 'W', W)
     # Setting the slice without the copy make the array not contiguous,
