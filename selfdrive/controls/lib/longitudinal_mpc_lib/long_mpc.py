@@ -234,8 +234,6 @@ class LongitudinalMpc:
     W = np.diag([0., .03, .0, 10., 0.0, 1.])
     for i in range(N):
       self.solver.cost_set(i, 'W', W)
-    # Setting the slice without the copy make the array not contiguous,
-    # causing issues with the C interface.
     self.solver.cost_set(N, 'W', np.copy(W[:COST_E_DIM, :COST_E_DIM]))
 
     # Set L2 slack cost on lower bound constraints
@@ -247,8 +245,6 @@ class LongitudinalMpc:
     W = np.diag([0., 0., .0, 1., 0.0, 1.])
     for i in range(N):
       self.solver.cost_set(i, 'W', W)
-    # Setting the slice without the copy make the array not contiguous,
-    # causing issues with the C interface.
     self.solver.cost_set(N, 'W', np.copy(W[:COST_E_DIM, :COST_E_DIM]))
 
     # Set L2 slack cost on lower bound constraints
@@ -306,8 +302,6 @@ class LongitudinalMpc:
     self.yref[:,1] = x
     self.yref[:,2] = v
     self.yref[:,3] = a
-    self.solver.cost_set_slice(0, N, "yref", self.yref[:N], api='old')
-    self.solver.set(N, "yref", self.yref[N][:COST_E_DIM])
     self.status = radarstate.leadOne.status or radarstate.leadTwo.status
 
     lead_xv_0 = self.process_lead(radarstate.leadOne)
