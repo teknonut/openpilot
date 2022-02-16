@@ -46,8 +46,8 @@ def dmonitoringd_thread(sm=None, pm=None):
                         sm['carState'].gasPressed
       v_cruise_last = v_cruise
 
-    if sm.updated['modelV2']:
-      driver_status.set_policy(sm['modelV2'], sm['carState'].vEgo)
+    # if sm.updated['modelV2']:
+    #   driver_status.set_policy(sm['modelV2'], sm['carState'].vEgo)
 
     # Get data from dmonitoringmodeld
     events = Events()
@@ -68,14 +68,14 @@ def dmonitoringd_thread(sm=None, pm=None):
       "faceDetected": driver_status.face_detected,
       "isDistracted": driver_status.driver_distracted,
       "awarenessStatus": driver_status.awareness,
-      "posePitchOffset": driver_status.pose.pitch_offseter.filtered_stat.mean(),
-      "posePitchValidCount": driver_status.pose.pitch_offseter.filtered_stat.n,
-      "poseYawOffset": driver_status.pose.yaw_offseter.filtered_stat.mean(),
-      "poseYawValidCount": driver_status.pose.yaw_offseter.filtered_stat.n,
+      # "posePitchOffset": driver_status.pose.pitch_offseter.filtered_stat.mean(),
+      # "posePitchValidCount": driver_status.pose.pitch_offseter.filtered_stat.n,
+      # "poseYawOffset": driver_status.pose.yaw_offseter.filtered_stat.mean(),
+      # "poseYawValidCount": driver_status.pose.yaw_offseter.filtered_stat.n,
       "stepChange": driver_status.step_change,
       "awarenessActive": driver_status.awareness_active,
       "awarenessPassive": driver_status.awareness_passive,
-      "isLowStd": driver_status.pose.low_std,
+      "isLowStd": driver_status.low_std,
       "hiStdCount": driver_status.hi_stds,
       "isActiveMode": driver_status.active_monitoring_mode,
     }
