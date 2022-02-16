@@ -29,7 +29,7 @@ class DRIVER_MONITOR_SETTINGS():
     self._PARTIAL_FACE_THRESHOLD = 0.765 if TICI else 0.43
 
     self._EE_THRESH11 = 0.4
-    self._EE_THRESH12 = 2.4
+    self._EE_THRESH12 = 2.45
     self._EE_THRESH21 = 0.01
     self._EE_THRESH22 = 0.35
 
