@@ -81,8 +81,8 @@ class DriverStatus():
     self.settings = settings
 
     # init driver status
-    self.ee1_offseter = RunningStatFilter(self.settings._POSE_OFFSET_MAX_COUNT)
-    self.ee2_offseter = RunningStatFilter(self.settings._POSE_OFFSET_MAX_COUNT)
+    self.ee1_offseter = RunningStatFilter(max_trackable=self.settings._POSE_OFFSET_MAX_COUNT)
+    self.ee2_offseter = RunningStatFilter(max_trackable=self.settings._POSE_OFFSET_MAX_COUNT)
     self.ee1_calibrated = False
     self.ee2_calibrated = False
 
