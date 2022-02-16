@@ -165,8 +165,8 @@ class DriverStatus():
     self.face_partial = driver_state.partialFace > self.settings._PARTIAL_FACE_THRESHOLD
     self.face_detected = driver_state.faceProb > self.settings._FACE_THRESHOLD or self.face_partial
 
-    self.eev1 = driver_state.something1
-    self.eev2 = driver_state.something2
+    self.eev1 = driver_state.notReadyProb[1]
+    self.eev2 = driver_state.readyProb[0]
 
     self.low_std = not self.face_partial
 
