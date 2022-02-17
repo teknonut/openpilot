@@ -178,6 +178,12 @@ DMonitoringResult dmonitoring_eval_frame(DMonitoringModelState* s, void* stream_
     ret.face_position[i] = s->output[3 + i];
     ret.face_position_meta[i] = softplus(s->output[9 + i]);
   }
+  for (int i = 0; i < 4; ++i) {
+    ret.ready_prob[i] = s->output[39 + i];
+  }
+  for (int i = 0; i < 2; ++i) {
+    ret.not_ready_prob[i] = s->output[43 + i];
+  }
   ret.face_prob = s->output[12];
   ret.left_eye_prob = s->output[21];
   ret.right_eye_prob = s->output[30];
@@ -216,6 +222,8 @@ void dmonitoring_publish(PubMaster &pm, uint32_t frame_id, const DMonitoringResu
   framed.setDistractedPose(res.distracted_pose);
   framed.setDistractedEyes(res.distracted_eyes);
   framed.setOccludedProb(res.occluded_prob);
+  framed.setReadyProb(res.ready_prob);
+  framed.setNotReadyProb(res.not_ready_prob);
   if (send_raw_pred) {
     framed.setRawPredictions(raw_pred.asBytes());
   }
