@@ -59,6 +59,7 @@ class CAR:
   KIA_SORENTO = "KIA SORENTO GT LINE 2018"
   KIA_STINGER = "KIA STINGER GT2 2018"
   KIA_CEED = "KIA CEED INTRO ED 2019"
+  KIA_EV6 = "KIA EV6 2022"
 
   # Genesis
   GENESIS_G70 = "GENESIS G70 2018"
@@ -1063,6 +1064,7 @@ DBC = {
   CAR.PALISADE: dbc_dict('hyundai_kia_generic', 'hyundai_kia_mando_front_radar'),
   CAR.VELOSTER: dbc_dict('hyundai_kia_generic', None),
   CAR.KIA_CEED: dbc_dict('hyundai_kia_generic', None),
+  CAR.KIA_EV6: dbc_dict('hyundai_kia_generic', None),
   CAR.SONATA_HYBRID: dbc_dict('hyundai_kia_generic', 'hyundai_kia_mando_front_radar'),
 }
 
