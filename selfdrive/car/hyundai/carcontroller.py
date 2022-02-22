@@ -50,7 +50,7 @@ class CarController():
              left_lane, right_lane, left_lane_depart, right_lane_depart):
 
     if self.CP.carFingerprint == CAR.KIA_EV6:
-      return []
+      return actuators.copy(), []
 
     # Steering Torque
     new_steer = int(round(actuators.steer * self.p.STEER_MAX))
